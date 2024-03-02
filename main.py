@@ -14,7 +14,7 @@ import json
 import sys
 import uuid 
 
-ru =[""]
+ru =["u-0-_-a-2-5-9"]
 #uuid = str(os.geteuid()) + str(os.getlogin())
 uuid =str(os.getlogin())
 id = "-".join(uuid)
