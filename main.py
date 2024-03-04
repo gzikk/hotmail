@@ -219,7 +219,7 @@ class Checker:
                 self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.rand}').json()['status']
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
-                        f0.write(f'{self.ra}@hotmail.com\n')
+                        f0.write(f'{self.rand}@hotmail.com\n')
                     self.a+=1
                     os.system('cls' if os.name=='nt'else"clear")
                     print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |')
