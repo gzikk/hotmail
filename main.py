@@ -207,7 +207,7 @@ class Checker:
         self.list='qwertyuioplkjhgfdsazxcvvbnm'
         try : 
             self.nmb = int(input("[=] - Enter Your Number Random ? 6...10 : ").upper())
-            if self.nmb >5:
+            if self.nmb >5 or self.nmb <11:
                 self.number()
               
             elif self.nmb >11:
