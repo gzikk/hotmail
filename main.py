@@ -8,16 +8,16 @@ import sys
 ru =["u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5"]
 
 uuid =str(os.getlogin())
-id = "-".join(uuid)
-print(f"ID : {id}")
-if id in ru : 
-    print(f'Acctive .... : {id}')
+id1 = "-".join(uuid)
+#print(f"ID : {id1}")
+if id1 in ru : 
+    print(f'ID : {id1}\nAcctive')
     time.sleep(2)
     os.system("clear")
 
 else:
     os.system('clear')
-    print(f'The ID No Acctive : {id} - Telegram @BBMZZ - @Zaidkarrem')
+    print(f'ID : {id1}\ninactive\nTelegram : @BBMZZ')
     sys.exit()
 
 class Checker:
@@ -48,7 +48,11 @@ class Checker:
             self.ran()
         elif self.un=="4":
             os.system('clear')
-            self.filecall()
+            self.me ="This option is in maintenance mode .".upper()
+            print(self.me)
+            sys.exit()
+
+            ##self.filecall()
         
     def filecall(self):
         self.fil1 = input("[=] - Enter Your Name File : ")
@@ -111,6 +115,7 @@ class Checker:
                             try:
                                 rs =str(res['obfuscated_email'])
                                 print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                time.sleep(2)
                             except KeyError as error:
                                 print('error')
                         except requests.exceptions.ConnectionError as error:
@@ -133,8 +138,8 @@ class Checker:
         for self.ra in self.ix:
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}').text
             if ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}').json()['status']
-                if self.url2=='ok':
+                self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}').json()['status']
+                if self.url3=='ok':
                     with open(f'acctive.txt','a') as f0:
                         f0.write(f'{self.ra}@outlook.com\n')
                     url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
@@ -178,6 +183,7 @@ class Checker:
                             try:
                                 rs =str(res['obfuscated_email'])
                                 print(f"Email | {self.ra}@outlook.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                time.sleep(2)
                             except KeyError as error:
                                 print('error')
                         except requests.exceptions.ConnectionError as error:
@@ -207,6 +213,7 @@ class Checker:
             elif self.nmb >11:
                 self.er1 = "The number is very large.".upper()
                 print(self.er1)
+                sys.exit()
         except ValueError as error:
             self.er = "Alphabet letters cannot be used".upper()
             print(self.er)
@@ -293,6 +300,7 @@ class Checker:
                             try:
                                 rs =str(res['obfuscated_email'])
                                 print(f"Email | {self.ra}@outlook.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                time.sleep(2)
                             except KeyError as error:
                                 print('error')
                         except requests.exceptions.ConnectionError as error:
@@ -371,6 +379,7 @@ class Checker:
                             try:
                                 rs =str(res['obfuscated_email'])
                                 print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                time.sleep(2)
                             except KeyError as error:
                                 print('error')
                         except requests.exceptions.ConnectionError as error:
