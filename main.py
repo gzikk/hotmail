@@ -5,7 +5,7 @@ import random
 import os
 import uuid
 import sys
-ru =["u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5","u-0-_-a-4-9-8"]
+ru =["u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5","T-e-c-h- -L-i-n-e"]
 
 uuid =str(os.getlogin())
 id1 = "-".join(uuid)
@@ -257,8 +257,7 @@ class Checker:
             if ('"OK"') in self.url:
                 self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}').json()['status']
                 if self.url2=='ok':
-                    with open(f'acctive.txt','a') as f0:
-                        f0.write(f'{self.ra}@outlook.com\n')
+                    
                     url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
                     head2={
                         'accept': '*/*',
@@ -285,6 +284,15 @@ class Checker:
                     try:
                         ge = requests.get(url2,headers=head2).json()
                         id = ge['data']['user']['id']
+                      
+                        fol = ge['data']['user']['edge_followed_by']['count']
+                        bio = ge['data']['user']['biography']
+                        fols = ge['data']['user']['edge_follow']['count']
+                        img = ge['data']['user']['profile_pic_url']
+                        nam = ge['data']['user']['full_name']
+                        rl = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")
+                        ree = rl.json()
+                        da = ree['date']
                         headers1 = {
                                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
                                 'viewport-width': '917',
@@ -300,9 +308,13 @@ class Checker:
                             try:
                                 rs =str(res['obfuscated_email'])
                                 print(f"Email | {self.ra}@outlook.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                with open('acctive.txt','a',encoding="utf-8") as f0:
+                                    f0.write(f'Name : {nam}\nFollowers : {fols}\nFollowing : {fol}\nBio : {bio}\nData : {da}\nRest : {rs}\nEmail : {self.ra}@outlook.com\n')
                                 time.sleep(2)
                             except KeyError as error:
                                 print('error')
+                                with open('acctive.txt','a') as f8:
+                                    f8.write(f'{self.ra}@outlook.com\n')
                         except requests.exceptions.ConnectionError as error:
                             continue
                     except requests.exceptions.ConnectionError as error:
@@ -364,6 +376,14 @@ class Checker:
                     try:
                         ge = requests.get(url2,headers=head2).json()
                         id = ge['data']['user']['id']
+                        fol = ge['data']['user']['edge_followed_by']['count']
+                        bio = ge['data']['user']['biography']
+                        fols = ge['data']['user']['edge_follow']['count']
+                        img = ge['data']['user']['profile_pic_url']
+                        nam = ge['data']['user']['full_name']
+                        rl = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")
+                        ree = rl.json()
+                        da = ree['date']
                         headers1 = {
                                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
                                 'viewport-width': '917',
@@ -379,9 +399,12 @@ class Checker:
                             try:
                                 rs =str(res['obfuscated_email'])
                                 print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                with open('acctive.txt','a',encoding="utf-8") as f0:
+                                    f0.write(f'Name : {nam}\nFollowers : {fols}\nFollowing : {fol}\nBio : {bio}\nData : {da}\nRest : {rs}\nEmail : {self.ra}@hotmail.com\n')
                                 time.sleep(2)
                             except KeyError as error:
-                                print('error')
+                                with open('acctive.txt','a') as f8:
+                                    f8.write(f'{self.ra}@hotmail.com\n')
                         except requests.exceptions.ConnectionError as error:
                             continue
                     except requests.exceptions.ConnectionError as error:
