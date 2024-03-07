@@ -5,7 +5,7 @@ import random
 import os
 import uuid
 import sys
-ru =["u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5","T-e-c-h- -L-i-n-e"]
+ru =["u-0-_-a-6-2-3","u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5","T-e-c-h- -L-i-n-e"]
 
 uuid =str(os.getlogin())
 id1 = "-".join(uuid)
