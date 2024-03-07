@@ -5,7 +5,7 @@ import random
 import os
 import uuid
 import sys
-ru =["u-0-_-a-2-7-0","u-0-_-a-2-5-4","u-0-_-a-4-7","u-0-_-a-2-5-9","u-0-_-a-2-9-3","u-0-_-a-5-1-5","T-e-c-h- -L-i-n-e","u-0-_-a-1-7-6","u-0-_-a-2-8-3"]
+ru =["u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5","T-e-c-h- -L-i-n-e"]
 
 uuid =str(os.getlogin())
 id1 = "-".join(uuid)
@@ -22,6 +22,7 @@ else:
 
 class Checker:
     def __init__(self) :
+        self.idf = id1
         self.a = 0
         self.b = 0
         self.f = 0
@@ -68,9 +69,9 @@ class Checker:
             sys.exit()
     def ho1(self):
         for self.ra in self.ix:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}').text
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
             if ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}').json()['status']
+                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
                         f0.write(f'{self.ra}@hotmail.com\n')
@@ -136,9 +137,9 @@ class Checker:
         print("Complete File .")
     def out(self):
         for self.ra in self.ix:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}').text
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}/{self.idf}').text
             if ('"OK"') in self.url:
-                self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}').json()['status']
+                self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url3=='ok':
                     with open(f'acctive.txt','a') as f0:
                         f0.write(f'{self.ra}@outlook.com\n')
@@ -221,9 +222,9 @@ class Checker:
     def number(self):
         while True :
             self.rand = str(''.join(random.choice(self.list) for i in range(self.nmb)))
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.rand}').text
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.rand}/{self.idf}').text
             if ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.rand}').json()['status']
+                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.rand}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
                         f0.write(f'{self.rand}@hotmail.com\n')
@@ -253,9 +254,9 @@ class Checker:
             print(self.err)
             sys.exit()
         for self.ra in self.ope:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}').text
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}/{self.idf}').text
             if ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}').json()['status']
+                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     
                     url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
@@ -344,9 +345,9 @@ class Checker:
             print(self.err)
             sys.exit()
         for self.ra in self.ope:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}').text
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
             if ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}').json()['status']
+                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
                         f0.write(f'{self.ra}@hotmail.com\n')
