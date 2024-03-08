@@ -5,21 +5,16 @@ import random
 import os
 import uuid
 import sys
-ru =["u-0-_-a-1-7-6","u-0-_-a-6-2-3","u-0-_-a-2-5-9","u-0-_-a-2-5-0","u-0-_-a-2-9-3","u-0-_-a-5-1-5","u-0-_-a-2-7-3","u-0-_-a-2-7-5","u-0-_-a-4-5-5","T-e-c-h- -L-i-n-e","u-0-_-a-2-7-1"]
+
 
 uuid =str(os.getlogin())
 id1 = "-".join(uuid)
 #print(f"ID : {id1}")
-if id1 in ru : 
-    print(f'ID : {id1}\nAcctive')
-    time.sleep(2)
-    os.system("clear")
 
-else:
-    os.system('clear')
-    print(f'ID : {id1}\ninactive\nTelegram : @BBMZZ')
-    sys.exit()
 
+print(f'ID : {id1}\nTelegram : @BBMZZ')
+time.sleep(1.1)
+os.system('clear')
 class Checker:
     def __init__(self) :
         self.idf = id1
@@ -36,7 +31,7 @@ class Checker:
         self.k = 0
         self.num = 0
         self.telegram = "@BBMZZ"
-        print("[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[!] - Saved the hunt in Name File (acctive.txt)".upper())
+        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
