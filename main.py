@@ -65,8 +65,14 @@ class Checker:
     def ho1(self):
         for self.ra in self.ix:
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
+            if ('"Subscription":"inactive"') in self.url:
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                exit()
             if ('"OK"') in self.url:
                 self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
+
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
                         f0.write(f'{self.ra}@hotmail.com\n')
@@ -133,7 +139,14 @@ class Checker:
     def out(self):
         for self.ra in self.ix:
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}/{self.idf}').text
-            if ('"OK"') in self.url:
+            if ('"Subscription":"inactive"') in self.url:
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                exit()
+
+
+            elif ('"OK"') in self.url:
                 self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url3=='ok':
                     with open(f'acctive.txt','a') as f0:
@@ -218,7 +231,12 @@ class Checker:
         while True :
             self.rand = str(''.join(random.choice(self.list) for i in range(self.nmb)))
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.rand}/{self.idf}').text
-            if ('"OK"') in self.url:
+            if ('"Subscription":"inactive"') in self.url: 
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                exit()
+            elif ('"OK"') in self.url:
                 self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.rand}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
