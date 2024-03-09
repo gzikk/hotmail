@@ -109,7 +109,7 @@ class Checker:
                     self.rspo=json.loads(rr)
                     self.user = self.rspo['user']['username']
                     with open('2010.txt','a') as self.izz :
-                        self.izz.write(f'{self.user}')
+                        self.izz.write(f'{self.user}\n')
                     print(self.user)
 
             except KeyError as error:
@@ -121,7 +121,7 @@ class Checker:
                 if self.ui =="y":
                     os.system('clear')
                     self.cookie = input("[=] - Sessoinid : ")
-                    self.username(self.cookie)
+                    self.username()
                 elif self.ui =="n":
                     os.system('clear')
                     self.end = "The tool has been closed."
