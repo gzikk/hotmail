@@ -5,9 +5,9 @@ import random
 import os
 import uuid
 import sys
-
-
+import json
 uuid =str(os.getlogin())
+print(uuid)
 id1 = "-".join(uuid)
 #print(f"ID : {id1}")
 
@@ -25,13 +25,14 @@ class Checker:
         self.n = 0
         self.j = 0
         self.r = 0
+        self.whil = True 
         self.e = 0
         self.u = 0
         self.o = 0
         self.k = 0
         self.num = 0
         self.telegram = "@BBMZZ"
-        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
+        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[5] - Username 2010 - 2011 \n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
@@ -47,8 +48,97 @@ class Checker:
             self.me ="This option is in maintenance mode .".upper()
             print(self.me)
             sys.exit()
+        elif self.un == "5":
+            os.system('clear')
+            self.py = "[1] - Username 2010\n[2] - Username 2011\n[3] - Username 2012"
+            print(self.py)
+            try :
 
-            ##self.filecall()
+                self.iny = int(input("[=] - Enter Your Number List  : "))
+                if self.iny ==1:
+                    os.system('clear')
+                    self.number1 = 6
+                    self.cookie ="12394903"
+                    self.username()
+                elif self.iny ==2:
+                    os.system('clear')
+                    self.number1 = 7
+                    self.cookie ="12394903"
+                    self.username()
+                elif self.iny == 3:
+                    os.system('clear')
+                    self.number1 = 8
+                    self.cookie ="12394903"
+                    self.username()
+                else:
+                    self.emn ="Choose an error."
+
+
+                    print(self.emn)
+                    sys.exit()
+
+            except ValueError as error1:
+                os.system('clear')
+                self.rt = f"Error Choice : {self.iny}"
+                print(self.rt)
+                sys.exit()
+    def username(self):
+        os.system('clear')
+        self.listnum ="1234567890"
+        while self.whil :
+
+            self.ro = str(''.join(random.choice(self.listnum)for i in range(self.number1)))
+            url = f'http://i.instagram.com/api/v1/users/{self.ro}/info/'
+            headers = {
+
+            'Host': 'i.instagram.com',
+            "Cookie":"mid=YF55GAALAAF55lDR3NkHNG4S-vjw; ig_did=F3A1F3B5-01DB-457B-A6FA-6F83AD1717DE; ig_nrcb=1; shbid=13126; shbts=1616804137.1316793; rur=PRN; ig_direct_region_hint=ATN; csrftoken=ot7HDQ6ZX2EPbVQe1P9Nqvm1WmMkzKn2; ds_user_id=46165248972; sessionid={self.cokiee}",
+            'Connection': 'Keep-Alive',
+            'User-Agent': 'Instagram 6.12.1 Android (30/11; 480dpi; 1080x2298; HONOR; ANY-LX2; HNANY-Q1; qcom; en_IQ)',
+            'Accept-Language': 'en-IQ, en-US',
+            'X-IG-Connection-Type': 'MOBILE(LTE)',
+            'X-IG-Capabilities': 'AQ==',
+            'Accept-Encoding': 'gzip',
+            }
+            rr = requests.get(url,headers=headers).text
+            try:
+                if 'User not found' in rr:
+                    self.iderr = "Tihe ID Error"
+                    print(self.iderr)
+                else:
+                    self.rspo=json.loads(rr)
+                    self.user = self.rspo['user']['username']
+                    with open('2010.txt','a') as self.izz :
+                        self.izz.write(f'{self.user}')
+                    print(self.user)
+
+            except KeyError as error:
+                os.system('clear')
+                
+                self.pi = "is blook in url - using sessoin id \nWould you like to use Sessionid ? [Y - N]."
+
+                self.ui = input('[=] - Choice : ').lower()
+                if self.ui =="y":
+                    os.system('clear')
+                    self.cookie = input("[=] - Sessoinid : ")
+                    self.username(self.cookie)
+                elif self.ui =="n":
+                    os.system('clear')
+                    self.end = "The tool has been closed."
+                    sys.exit()
+                else:
+                    self.emn ="Choose an error."
+
+
+                    print(self.emn)
+                    sys.exit()
+                break
+                
+
+
+
+
+        
         
     def filecall(self):
         self.fil1 = input("[=] - Enter Your Name File : ")
@@ -65,6 +155,7 @@ class Checker:
     def ho1(self):
         for self.ra in self.ix:
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
+            print(self.url)
             if ('"Subscription":"inactive"') in self.url:
                 os.system("clear")
                 self.pcs ='No acctive id'
@@ -268,7 +359,12 @@ class Checker:
             sys.exit()
         for self.ra in self.ope:
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}/{self.idf}').text
-            if ('"OK"') in self.url:
+            if ('"Subscription":"inactive"') in self.url:
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                exit()
+            elif ('"OK"') in self.url:
                 self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     
@@ -359,7 +455,12 @@ class Checker:
             sys.exit()
         for self.ra in self.ope:
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
-            if ('"OK"') in self.url:
+            if ('"Subscription":"inactive"') in self.url:
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                exit()
+            elif ('"OK"') in self.url:
                 self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
                 if self.url2=='ok':
                     with open(f'acctive.txt','a') as f0:
