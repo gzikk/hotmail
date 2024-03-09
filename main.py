@@ -116,7 +116,7 @@ class Checker:
                 os.system('clear')
                 
                 self.pi = "is blook in url - using sessoin id \nWould you like to use Sessionid ? [Y - N]."
-
+                print(self.pi)
                 self.ui = input('[=] - Choice : ').lower()
                 if self.ui =="y":
                     os.system('clear')
