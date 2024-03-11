@@ -140,7 +140,7 @@ class Checker:
                     os.system('clear')
                     print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
                     with open('acctive.txt','a') as self.fe:
-                        self.fe.write(f'{self.ra}')
+                        self.fe.write(f'{self.ra}\n')
             else:
                 self.b+=1
                 os.system('clear')
