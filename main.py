@@ -32,7 +32,7 @@ class Checker:
         self.k = 0
         self.num = 0
         self.telegram = "@BBMZZ"
-        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[5] - Username 2010 - 2011 \n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
+        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
@@ -49,46 +49,103 @@ class Checker:
             print(self.me)
             sys.exit()
         elif self.un == "5":
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/bagyay/{self.idf}').text
+            print(self.url)
+            if ('"Subscription":"inactive"') in self.url:
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                sys.exit()
+            else:
+                os.system('clear')
+                self.fir = input("[=] - Enter Your Name File : ")
+                try:
+                    self.firr = open(self.fir,'r').read().splitlines()
+                    self.gmail()
+                except FileNotFoundError as error:
+                    os.system('clear')
+                    self.erf = "The File No in Phone ."
+                    print(self.erf)
+                    sys.exit()
+
+
+
+        elif self.un == "6":
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/akiiahhhha/{self.idf}').text
             print(self.url)
             if ('"Subscription":"inactive"') in self.url:
                 os.system("clear")
                 self.pcs ='No acctive id'
                 print(self.pcs)
                 exit()
-            os.system('clear')
-            self.py = "[1] - Username 2010\n[2] - Username 2011\n[3] - Username 2012"
-            print(self.py)
-            try :
+            else:
 
-                self.iny = int(input("[=] - Enter Your Number List  : "))
-                if self.iny ==1:
-                    os.system('clear')
-                    self.number1 = 6
-                    self.cookie ="12394903"
-                    self.username()
-                elif self.iny ==2:
-                    os.system('clear')
-                    self.number1 = 7
-                    self.cookie ="12394903"
-                    self.username()
-                elif self.iny == 3:
-                    os.system('clear')
-                    self.number1 = 8
-                    self.cookie ="12394903"
-                    self.username()
-                else:
-                    self.emn ="Choose an error."
-
-
-                    print(self.emn)
-                    sys.exit()
-
-            except ValueError as error1:
                 os.system('clear')
-                self.rt = f"Error Choice : {self.iny}"
-                print(self.rt)
-                sys.exit()
+                self.py = "[1] - Username 2010\n[2] - Username 2011\n[3] - Username 2012"
+                print(self.py)
+                try :
+
+                    self.iny = int(input("[=] - Enter Your Number List  : "))
+                    if self.iny ==1:
+                        os.system('clear')
+                        self.number1 = 6
+                        self.cookie ="12394903"
+                        self.username()
+                    elif self.iny ==2:
+                        os.system('clear')
+                        self.number1 = 7
+                        self.cookie ="12394903"
+                        self.username()
+                    elif self.iny == 3:
+                        os.system('clear')
+                        self.number1 = 8
+                        self.cookie ="12394903"
+                        self.username()
+                    else:
+                        self.emn ="Choose an error."
+
+
+                        print(self.emn)
+                        sys.exit()
+
+                except ValueError as error1:
+                    os.system('clear')
+                    self.rt = f"Error Choice : {self.iny}"
+                    print(self.rt)
+                    sys.exit()
+    def gmail(self):
+        self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.ra}/{self.idf}').text
+        print(self.url)
+        if ('"Subscription":"inactive"') in self.url:
+            os.system("clear")
+            self.pcs ='No acctive id'
+            print(self.pcs)
+            exit()
+        for self.ra in self.firr:
+            self.urli = requests.get(f"https://api-m-525f11315c3c.herokuapp.com/api/instagram/zaid.k.k/{self.ra}").text
+            if ('"status": "OK",') in self.urli:
+
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.ra}/{self.idf}').text
+                
+
+                
+                if ('"status":"bad"') in self.url:
+                    self.k +=1
+                    os.system('clear')
+                    print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
+                elif ('"status":"Ok"') in self.url:
+                    self.a+=1
+                    os.system('clear')
+                    print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
+                    with open('acctive.txt','a') as self.fe:
+                        self.fe.write(f'{self.ra}')
+            else:
+                self.b+=1
+                os.system('clear')
+                print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
+
+
+
     def username(self):
         os.system('clear')
         self.listnum ="1234567890"
@@ -140,22 +197,12 @@ class Checker:
                     print(self.emn)
                     sys.exit()
                 break
-                
-
-
-
-
-        
-        
     def filecall(self):
         self.fil1 = input("[=] - Enter Your Name File : ")
         try:
             self.ix = open(self.fil1,"r").read().splitlines()
             threading.Thread(target=self.ho1).start()
             threading.Thread(target=self.out).start()
-            
-           
-
         except FileNotFoundError as error:
             self.fo = "The Name File Error in Phone .!".upper()
             sys.exit()
