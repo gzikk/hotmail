@@ -49,6 +49,13 @@ class Checker:
             print(self.me)
             sys.exit()
         elif self.un == "5":
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
+            print(self.url)
+            if ('"Subscription":"inactive"') in self.url:
+                os.system("clear")
+                self.pcs ='No acctive id'
+                print(self.pcs)
+                exit()
             os.system('clear')
             self.py = "[1] - Username 2010\n[2] - Username 2011\n[3] - Username 2012"
             print(self.py)
