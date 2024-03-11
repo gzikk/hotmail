@@ -32,7 +32,7 @@ class Checker:
         self.k = 0
         self.num = 0
         self.telegram = "@BBMZZ"
-        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook]\n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
+        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
@@ -45,9 +45,11 @@ class Checker:
             self.ran()
         elif self.un=="4":
             os.system('clear')
-            self.me ="This option is in maintenance mode .".upper()
-            print(self.me)
-            sys.exit()
+            self.filecall()
+
+            #self.me ="This option is in maintenance mode .".upper()
+            #print(self.me)
+            #sys.exit()
         elif self.un == "5":
             self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/bagyay/{self.idf}').text
             print(self.url)
