@@ -7,12 +7,12 @@ import uuid
 import sys
 import json
 uuid =str(os.getlogin())
-print(uuid)
+
 id1 = "-".join(uuid)
 #print(f"ID : {id1}")
 
 
-print(f'ID : {id1}\nTelegram : @BBMZZ')
+#print(f'ID : {id1}\nTelegram : @BBMZZ')
 time.sleep(1.1)
 os.system('clear')
 class Checker:
@@ -32,7 +32,8 @@ class Checker:
         self.k = 0
         self.num = 0
         self.telegram = "@BBMZZ"
-        print(f"[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
+        
+        print(f"\033[1;32m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
@@ -116,7 +117,7 @@ class Checker:
                     print(self.rt)
                     sys.exit()
     def gmail(self):
-        self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.ra}/{self.idf}').text
+        self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/uuyqyyq/{self.idf}').text
         print(self.url)
         if ('"Subscription":"inactive"') in self.url:
             os.system("clear")
@@ -151,6 +152,8 @@ class Checker:
     def username(self):
         os.system('clear')
         self.listnum ="1234567890"
+        self.listcookies =['12']
+        self.lc = random.choice(self.listcookies)
         while self.whil :
 
             self.ro = str(''.join(random.choice(self.listnum)for i in range(self.number1)))
@@ -158,7 +161,7 @@ class Checker:
             headers = {
 
             'Host': 'i.instagram.com',
-            "Cookie":"mid=YF55GAALAAF55lDR3NkHNG4S-vjw; ig_did=F3A1F3B5-01DB-457B-A6FA-6F83AD1717DE; ig_nrcb=1; shbid=13126; shbts=1616804137.1316793; rur=PRN; ig_direct_region_hint=ATN; csrftoken=ot7HDQ6ZX2EPbVQe1P9Nqvm1WmMkzKn2; ds_user_id=46165248972; sessionid={self.cokiee}",
+            "Cookie":f"mid=YF55GAALAAF55lDR3NkHNG4S-vjw; ig_did=F3A1F3B5-01DB-457B-A6FA-6F83AD1717DE; ig_nrcb=1; shbid=13126; shbts=1616804137.1316793; rur=PRN; ig_direct_region_hint=ATN; csrftoken=ot7HDQ6ZX2EPbVQe1P9Nqvm1WmMkzKn2; ds_user_id=46165248972; sessionid={self.lc}",
             'Connection': 'Keep-Alive',
             'User-Agent': 'Instagram 6.12.1 Android (30/11; 480dpi; 1080x2298; HONOR; ANY-LX2; HNANY-Q1; qcom; en_IQ)',
             'Accept-Language': 'en-IQ, en-US',
@@ -187,10 +190,24 @@ class Checker:
                 if self.ui =="y":
                     os.system('clear')
                     self.cookie = input("[=] - Sessoinid : ")
+                    try:
+                            
+                        self.listcookies.remove('12')
+                        self.listcookies.append(self.cookie)
+                        self.username()
+                        
+                    except :
+                        self.listcookies.remove(f'{self.lc}')
+                        self.listcookies.append(self.cookie)
+                        self.username()
+                        
+                    
+
                     self.username()
                 elif self.ui =="n":
                     os.system('clear')
                     self.end = "The tool has been closed."
+                    print(self.end)
                     sys.exit()
                 else:
                     self.emn ="Choose an error."
