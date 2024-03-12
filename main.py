@@ -180,13 +180,16 @@ class Checker:
                     self.cookie = input("[=] - Sessoinid : ")
                 
                         
-                    listcookies.remove('12')
+                    lc = listcookies.remove('12')
+                    print(lc)
+                    time.sleep(2)
+
                     listcookies.append(self.cookie)
                     self.username()
                         
                     
                     
-                    self.username()
+                 
                 elif self.ui =="n":
                     os.system('clear')
                     self.end = "The tool has been closed."
