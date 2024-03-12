@@ -82,12 +82,10 @@ class Checker:
                 print(self.pcs)
                 exit()
             else:
-
                 os.system('clear')
                 self.py = "[1] - Username 2010\n[2] - Username 2011\n[3] - Username 2012"
                 print(self.py)
                 try :
-
                     self.iny = int(input("[=] - Enter Your Number List  : "))
                     if self.iny ==1:
                         os.system('clear')
@@ -106,11 +104,8 @@ class Checker:
                         self.username()
                     else:
                         self.emn ="Choose an error."
-
-
                         print(self.emn)
                         sys.exit()
-
                 except ValueError as error1:
                     os.system('clear')
                     self.rt = f"Error Choice : {self.iny}"
@@ -127,11 +122,7 @@ class Checker:
         for self.ra in self.firr:
             self.urli = requests.get(f"https://api-m-525f11315c3c.herokuapp.com/api/instagram/zaid.k.k/{self.ra}").text
             if ('"status": "OK",') in self.urli:
-
                 self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.ra}/{self.idf}').text
-                
-
-                
                 if ('"status":"bad"') in self.url:
                     self.k +=1
                     os.system('clear')
@@ -146,20 +137,15 @@ class Checker:
                 self.b+=1
                 os.system('clear')
                 print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
-
-
-
     def username(self):
         os.system('clear')
         self.listnum ="1234567890"
         self.listcookies =['12']
         self.lc = random.choice(self.listcookies)
         while self.whil :
-
             self.ro = str(''.join(random.choice(self.listnum)for i in range(self.number1)))
             url = f'http://i.instagram.com/api/v1/users/{self.ro}/info/'
             headers = {
-
             'Host': 'i.instagram.com',
             "Cookie":f"mid=YF55GAALAAF55lDR3NkHNG4S-vjw; ig_did=F3A1F3B5-01DB-457B-A6FA-6F83AD1717DE; ig_nrcb=1; shbid=13126; shbts=1616804137.1316793; rur=PRN; ig_direct_region_hint=ATN; csrftoken=ot7HDQ6ZX2EPbVQe1P9Nqvm1WmMkzKn2; ds_user_id=46165248972; sessionid={self.lc}",
             'Connection': 'Keep-Alive',
@@ -200,9 +186,6 @@ class Checker:
                         self.listcookies.remove(f'{self.lc}')
                         self.listcookies.append(self.cookie)
                         self.username()
-                        
-                    
-
                     self.username()
                 elif self.ui =="n":
                     os.system('clear')
