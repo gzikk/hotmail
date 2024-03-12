@@ -11,7 +11,7 @@ uuid =str(os.getlogin())
 id1 = "-".join(uuid)
 #print(f"ID : {id1}")
 
-
+listcookies =['12']
 #print(f'ID : {id1}\nTelegram : @BBMZZ')
 time.sleep(1.1)
 os.system('clear')
@@ -138,9 +138,10 @@ class Checker:
                 os.system('clear')
                 print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
     def username(self):
+        global listcookies
         os.system('clear')
         self.listnum ="1234567890"
-        listcookies =['12']
+        
         self.lc = random.choice(listcookies)
         print(self.lc)
         time.sleep(2)
