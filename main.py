@@ -140,8 +140,8 @@ class Checker:
     def username(self):
         os.system('clear')
         self.listnum ="1234567890"
-        self.listcookies =['12']
-        self.lc = random.choice(self.listcookies)
+        listcookies =['12']
+        self.lc = random.choice(listcookies)
         print(self.lc)
         time.sleep(2)
         while self.whil :
@@ -178,16 +178,14 @@ class Checker:
                 if self.ui =="y":
                     os.system('clear')
                     self.cookie = input("[=] - Sessoinid : ")
-                    try:
-                            
-                        self.listcookies.remove('12')
-                        self.listcookies.append(self.cookie)
-                        self.username()
+                
                         
-                    except :
-                        self.listcookies.remove(f'{self.lc}')
-                        self.listcookies.append(self.cookie)
-                        self.username()
+                    listcookies.remove('12')
+                    listcookies.append(self.cookie)
+                    self.username()
+                        
+                    
+                    
                     self.username()
                 elif self.ui =="n":
                     os.system('clear')
