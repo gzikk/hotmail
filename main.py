@@ -143,6 +143,7 @@ class Checker:
         self.listcookies =['12']
         self.lc = random.choice(self.listcookies)
         print(self.lc)
+        time.sleep(2)
         while self.whil :
             self.ro = str(''.join(random.choice(self.listnum)for i in range(self.number1)))
             url = f'http://i.instagram.com/api/v1/users/{self.ro}/info/'
