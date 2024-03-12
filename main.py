@@ -90,17 +90,17 @@ class Checker:
                     if self.iny ==1:
                         os.system('clear')
                         self.number1 = 6
-                        self.cookie ="12394903"
+                   
                         self.username()
                     elif self.iny ==2:
                         os.system('clear')
                         self.number1 = 7
-                        self.cookie ="12394903"
+              
                         self.username()
                     elif self.iny == 3:
                         os.system('clear')
                         self.number1 = 8
-                        self.cookie ="12394903"
+                       
                         self.username()
                     else:
                         self.emn ="Choose an error."
@@ -142,6 +142,7 @@ class Checker:
         self.listnum ="1234567890"
         self.listcookies =['12']
         self.lc = random.choice(self.listcookies)
+        print(self.lc)
         while self.whil :
             self.ro = str(''.join(random.choice(self.listnum)for i in range(self.number1)))
             url = f'http://i.instagram.com/api/v1/users/{self.ro}/info/'
