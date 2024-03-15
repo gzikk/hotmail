@@ -37,7 +37,7 @@ class Checker:
         self.nt = "Connection Error "
         self.colr = str(''.join(random.choice(self.rcol) for i in range(1)))
    
-        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n[!] - Version Tool 0.3")
+        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n[!] - Version Tool 0.4")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
