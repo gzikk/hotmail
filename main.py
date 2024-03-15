@@ -6,7 +6,8 @@ import os
 import uuid
 import sys
 import json
-
+print("The tool will return to work after 5 hours")
+exit()
 uuid =str(os.getlogin())
 
 id1 = "-".join(uuid)
