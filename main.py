@@ -50,7 +50,7 @@ class Checker:
             self.choi = "[1] - Checker Hotmail APi Zaid\n[2] - Checker Hotmail Api Instagram\n[!] - No saved Info username in hit "
             print(self.choi)
             self.ux = input('[=] - Enter Your Number 1 or 2 : ')
-            if self.ux ==1:
+            if self.ux =='1':
                 os.system('clear')
                 self.hotmail()
             elif self.ux == "2":
