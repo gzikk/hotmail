@@ -191,7 +191,7 @@ class Checker:
             self.err="THE NAME FILE ERROR IN PHONE !"
             print(self.err)
             sys.exit()
-        for self.email in self.fil:
+        for self.email in self.ope:
             url ='https://www.instagram.com/api/v1/web/accounts/login/ajax/'
 
             head1 = {
