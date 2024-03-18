@@ -262,14 +262,11 @@ class Checker:
         self.listnum ="1234567890"
         
         self.lc = random.choice(listcookies)
-        self.pro = open('proxy11.txt','r').read().splitlines()
+        
         print(self.lc)
         time.sleep(2)
         while self.whil :
-            self.ro = str(''.join(random.choice(self.numberchoice)for i in range(self.number1)))
-            po = random.choice(self.pro)
-            print(po)
-            pe ={'http':f"http://{po}"}
+            self.ro = str(''.join(random.choice(self.numberchoice) for i in range(6)))
             
             url = f'http://i.instagram.com/api/v1/users/{self.ro}/info/'
             headers = {
