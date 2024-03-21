@@ -7,8 +7,7 @@ import uuid
 import sys
 import json
 from user_agent import generate_user_agent
-print("error")
-exit()
+
 uuid =str(os.getlogin())
 
 id1 = "-".join(uuid)
