@@ -43,7 +43,7 @@ class Checker:
         
         #print(self.numberchoice)
    
-        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [Hotmail - Outlook - Gmail] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n[!] - Version Tool 0.6")
+        print(f"\033[1;3{self.colr}m[1] - Hotmail\n[2] - Outlook\n[3] - Random Choice Hotmail\n[4] - Call Checker [ Call ] (Acctive) \n[5] - Gmail [new]\n[6] - Username 2010 - 2011 [new]\n[!] - Saved the hunt in Name File (acctive.txt)\n[-] - ID : {id1}\n[!] - Version Tool 0.6")
         self.un = input("[=] - Enter Your Number list : ")
         if self.un =="1":
             os.system('clear')
@@ -70,7 +70,14 @@ class Checker:
             self.ran()
         elif self.un=="4":
             os.system('clear')
-            self.filecall()
+            self.cko = '[1] - Hotmail and Outlook\n[2] - Gmail and Hotmail and Outllok'
+            print(self.cko)
+            self.t6 = input("[=] - Enter Your Choice 1 or 2 : ")
+            if self.t6 == 1 or "1":
+
+                self.filecall()
+            elif self.t6 == "2" or 2 :
+                self.filecalll()
 
             #self.me ="This option is in maintenance mode .".upper()
             #print(self.me)
@@ -329,6 +336,15 @@ class Checker:
                     print(self.emn)
                     sys.exit()
                 break
+    def filecalll(self):
+        self.fil1 = input("[=] - Enter Your Name File : ")
+        try:
+            self.ixx = open(self.fil1,"r").read().splitlines()
+            threading.Thread(target=self.calll).start()
+            #threading.Thread(target=self.out).start()
+        except FileNotFoundError as error:
+            self.fo = "The Name File Error in Phone .!".upper()
+            sys.exit()
     def filecall(self):
         self.fil1 = input("[=] - Enter Your Name File : ")
         try:
@@ -338,6 +354,62 @@ class Checker:
         except FileNotFoundError as error:
             self.fo = "The Name File Error in Phone .!".upper()
             sys.exit()
+    def calll(self):
+        self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/susudjidod/{self.idf}').text
+        print(self.url)
+        if ('"Subscription":"inactive"') in self.url:
+            os.system("clear")
+            self.pcs ='No acctive id'
+            print(self.pcs)
+            exit()
+        else:
+
+            for self.email in self.ixx:
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/{self.email}/{self.idf}').text
+                if ('"OK"') in self.url:
+                   
+                    self.url2 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/hotmail/zaid/{self.email}/{self.idf}').json()['status']
+                    if self.url2=='ok':
+                      
+                        with open(f'acctive.txt','a') as f0:
+                            f0.write(f'{self.ra}@hotmail.com\n')
+                        os.system('clear')
+                        self.a+=1
+                        print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| TeleGram | {self.telegram} |')
+
+                    else:
+                        os.system('clear')
+                        self.b+=1
+                        print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| TeleGram | {self.telegram} |')
+                else:
+                    os.system('clear')
+                    self.e+=1
+                    print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| TeleGram | {self.telegram} |')
+                self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/outlook/{self.email}/{self.idf}').text
+                if ('"Subscription":"inactive"') in self.url:
+                    os.system("clear")
+                    self.pcs ='No acctive id'
+                    print(self.pcs)
+                    exit()
+                elif ('"OK"') in self.url:
+                    self.url3 = requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/outlook/zaid/{self.email}/{self.idf}').json()['status']
+                    if self.url3=='ok':
+                        with open(f'acctive.txt','a') as f0:
+                            f0.write(f'{self.ra}@outlook.com\n')
+                        os.system('clear')
+                        self.n+=1
+                        print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| TeleGram | {self.telegram} |')
+
+                    else:
+                        os.system('clear')
+                        self.r+=1
+                        print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| TeleGram | {self.telegram} |')
+                
+                else:
+                    os.system('clear')
+                    self.o+=1
+                    print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| TeleGram | {self.telegram} |')
+                
     def call(self):
         self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api/instagram/hotmail/susudjidod/{self.idf}').text
         print(self.url)
@@ -393,6 +465,9 @@ class Checker:
                     os.system('clear')
                     self.o+=1
                     print(f'| HIT H | {self.a} | BAD H | {self.b} | BAD I | {self.e} | \n| HIT O | {self.n} | BAD O | {self.r} | BAD I | {self.o} | \n| HIT G | {self.f} | BAD G | {self.u} | BAD I | {self.k} |\n| TeleGram | {self.telegram} |')
+                
+                
+                
                 self.urli = requests.get(f"https://api-m-525f11315c3c.herokuapp.com/api/instagram/zaid.k.k/{self.email}").text
                 if ('"status": "OK",') in self.urli:
                     self.url =requests.get(f'https://api-m-525f11315c3c.herokuapp.com/api1/gmail/BBMZZ/v1/G-1/{self.email}/{self.idf}').text
