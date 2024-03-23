@@ -75,9 +75,9 @@ class Checker:
             self.t6 = input("[=] - Enter Your Choice 1 or 2 : ")
             if self.t6 == 1 or "1":
 
-                self.filecall()
-            elif self.t6 == "2" or 2 :
                 self.filecalll()
+            elif self.t6 == "2" or 2 :
+                self.filecall()
 
             #self.me ="This option is in maintenance mode .".upper()
             #print(self.me)
