@@ -25,7 +25,7 @@ class Gmail:
         self.mun()
     def mun(self):
         os.system('cls' if os.name =='nt'else'clear')
-        self.listmun = "{}3{}m\n[1] - Checker Gmail List\n[2] - Remove File Name".format(self.clor,self.red)
+        self.listmun = "{}3{}m\n[1] - Checker Gmail List\n[2] - Remove File Name\n[=] - Version Tool 0.1".format(self.clor,self.red)
         print(self.listmun)
         self.input1()
 
@@ -120,13 +120,17 @@ class Gmail:
                         print('{}3{}mHit : {} - Bad Instagram : {} - Bad Gmail : {}'.format(self.clor,self.red,self.ok,self.bad,self.bad1))
                         
                     
-                    elif ('"email":"true"') in self.rf:
+                    elif ('"user":true,') in self.rf:
                         self.req = requests.get(f'https://apiibbmzz-5ec7efdc4d56.herokuapp.com/api/gmail/v2/{self.email}').text
                        
                         if ('"email":"true"') in self.req:
                             with open('HackedBBMZZ.txt','a') as f8:
                                     f8.write(f'{self.email}\n')
+                           
+                            os.system('cls' if os.name =='nt'else'clear')
                             self.ok +=1
+                       
+                            print('{}3{}mHit : {} - Bad Instagram : {} - Bad Gmail : {}'.format(self.clor,self.red,self.ok,self.bad,self.bad1))
                             
                             self.url1 ='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.email)
                             self.head1 = {
