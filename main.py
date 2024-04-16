@@ -127,10 +127,10 @@ class Gmail:
                             with open('HackedBBMZZ.txt','a') as f8:
                                     f8.write(f'{self.email}\n')
                            
-                            os.system('cls' if os.name =='nt'else'clear')
+                            #os.system('cls' if os.name =='nt'else'clear')
                             self.ok +=1
                        
-                            print('{}3{}mHit : {} - Bad Instagram : {} - Bad Gmail : {}'.format(self.clor,self.red,self.ok,self.bad,self.bad1))
+                            #print('{}3{}mHit : {} - Bad Instagram : {} - Bad Gmail : {}'.format(self.clor,self.red,self.ok,self.bad,self.bad1))
                             
                             self.url1 ='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.email)
                             self.head1 = {
