@@ -120,7 +120,7 @@ class Gmail:
                         print('{}3{}mHit : {} - Bad Instagram : {} - Bad Gmail : {}'.format(self.clor,self.red,self.ok,self.bad,self.bad1))
                         
                     
-                    elif ('"user":true,') in self.rf:
+                    elif ('"email":"true"') in self.rf:
                         self.req = requests.get(f'https://apiibbmzz-5ec7efdc4d56.herokuapp.com/api/gmail/v2/{self.email}').text
                        
                         if ('"email":"true"') in self.req:
