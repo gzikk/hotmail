@@ -26,7 +26,7 @@ class Gmail:
         self.mun()
     def mun(self):
         os.system('cls' if os.name =='nt'else'clear')
-        self.listmun = "{}3{}m\n[1] - Checker Gmail List\n[2] - Remove File Name\n[3] - Username 2010 - 2011 - 2012\n[=] - Version Tool 0.1".format(self.clor,self.red)
+        self.listmun = "{}3{}m\n[1] - Checker Gmail List\n[2] - Remove File Name\n[3] - Username 2010 - 2011 - 2012\n[=] - Version Tool 0.2".format(self.clor,self.red)
         print(self.listmun)
         self.input1()
 
@@ -40,7 +40,7 @@ class Gmail:
             self.delt()
         elif self.inp == '3':
             os.system('cls' if os.name =='nt'else'clear')
-            self.i2 = "[1] - Check and Check 2010\n[2] - Check and Check 2010 2011\n[3] - Check and Check 2012"
+            self.i2 = "[1] - Check and Check 2010\n[2] - Check and Check 2011\n[3] - Check and Check 2012"
             print(self.i2)
             self.i3 = input('[=] - Enter Your : ').lower()
             self.listnumber ='1234567890'
